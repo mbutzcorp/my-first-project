@@ -15,12 +15,14 @@
 //     return trans("messages.dashboard");
 // })->name("home");
 
-// Route::get('/hello/{name}', function($name) {
-// 	return redirect()->route("home");
-// });
+Route::get('/basetemplate', function() {
+	return view('welcome');
+});
 
 Route::middleware("localization")->group(function() {
 	Route::get("/dashboard", "DashboardController@index")->name("dashboard.index");
+
+	Route::get("/users", "UserController@index")->name("users.index");
 
 	// Route::resource("dashboard", "DashboardController");
 	Route::resource("products", "ProductController", ['except' => ['destroy'] ]);
